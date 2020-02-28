@@ -5,6 +5,8 @@
  */
 package vectores;
 
+import java.util.Arrays;
+
 /**
  *
  * @author cissanal
@@ -19,7 +21,14 @@ public class Matriz1 extends javax.swing.JFrame {
     int [][] arrayNum = new int[5][5];
     public void generar(){
         for (int i = 0; i < 5; i++) {
-            
+            for (int j = 0; j < 5; j++) {
+                if(j%2==0){
+                    arrayNum[i][j]=(int)Math.pow(2, j+1);    
+                }else{
+                    arrayNum[i][j]=(int)Math.pow(3, j+1);    
+                }
+                
+            }
         }
         
         
@@ -27,12 +36,24 @@ public class Matriz1 extends javax.swing.JFrame {
     
     public Matriz1() {
         initComponents();
-        int[][] arrayNum; 
+        
         
     }
 
     public void imprimirMatriz(){
-        arrayNum[2][3]=3;
+        generar();
+        for (int i = 0; i < 5; i++) {
+            
+            for (int j = 0; j < 5; j++) {
+                
+                    System.out.println(arrayNum[i][j]);
+                    
+                
+                
+                
+                
+            }
+        }
     }
     
     /**
@@ -274,7 +295,7 @@ public class Matriz1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        imprimirMatriz();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
