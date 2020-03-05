@@ -5,6 +5,7 @@
  */
 package vectores;
 
+import java.util.Arrays;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -24,6 +25,30 @@ public class Rombo extends javax.swing.JFrame {
         llenarCombo();
     }
 
+    public void llenarArray(String relleno){
+        
+        for (int i = 0; i <= arrayRombo.length/2; i++) {
+            arrayRombo[i][(arrayRombo.length/2)+i]=9;
+            arrayRombo[i][(arrayRombo.length/2)-i]=9;
+        }
+        
+        for (int i = 0; i <= arrayRombo.length/2; i++) {
+            arrayRombo[(arrayRombo.length-i)-1][(arrayRombo.length/2)+i]=9;
+            arrayRombo[(arrayRombo.length-i)-1][(arrayRombo.length/2)-i]=9;
+        }
+        
+        System.out.println(Arrays.deepToString(arrayRombo));
+        
+        this.jTextArea1.setText(" ");
+        for (int i = 0; i < arrayRombo.length; i++) {
+                this.jTextArea1.append("\n");
+            for (int j = 0; j < arrayRombo[0].length; j++) {
+                this.jTextArea1.append(arrayRombo[i][j]+" ");
+            }
+        }
+        
+        
+    }
     
     private void llenarCombo(){
         modeloCombo=new DefaultComboBoxModel<>();
@@ -105,7 +130,7 @@ public class Rombo extends javax.swing.JFrame {
         
         String relleno = this.jComboBox1.getSelectedItem().toString();
         arrayRombo = new int[Integer.parseInt(this.jSpinner1.getValue().toString())][Integer.parseInt(this.jSpinner1.getValue().toString())];
-        
+        llenarArray(relleno);
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
