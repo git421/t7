@@ -28,13 +28,16 @@ public class Rombo extends javax.swing.JFrame {
     public void llenarArray(String relleno){
         
         for (int i = 0; i <= arrayRombo.length/2; i++) {
-            arrayRombo[i][(arrayRombo.length/2)+i]=9;
-            arrayRombo[i][(arrayRombo.length/2)-i]=9;
+            arrayRombo[i][(arrayRombo.length/2)+i]=this.jComboBox1.getSelectedItem().toString();
+            arrayRombo[i][(arrayRombo.length/2)-i]=this.jComboBox1.getSelectedItem().toString();
+            for (int j = (arrayRombo.length/2)+i; j <= arrayRombo.length-1; j++) {
+                arrayRombo[i][j]=this.jComboBox1.getSelectedItem().toString();
+            }
         }
         
         for (int i = 0; i <= arrayRombo.length/2; i++) {
-            arrayRombo[(arrayRombo.length-i)-1][(arrayRombo.length/2)+i]=9;
-            arrayRombo[(arrayRombo.length-i)-1][(arrayRombo.length/2)-i]=9;
+            arrayRombo[(arrayRombo.length-i)-1][(arrayRombo.length/2)+i]=this.jComboBox1.getSelectedItem().toString();
+            arrayRombo[(arrayRombo.length-i)-1][(arrayRombo.length/2)-i]=this.jComboBox1.getSelectedItem().toString();
         }
         
         System.out.println(Arrays.deepToString(arrayRombo));
@@ -59,7 +62,7 @@ public class Rombo extends javax.swing.JFrame {
         modeloCombo.addElement("#");
         this.jComboBox1.setModel(modeloCombo);
     }
-    int[][] arrayRombo;
+    String[][] arrayRombo;
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -129,7 +132,12 @@ public class Rombo extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
         String relleno = this.jComboBox1.getSelectedItem().toString();
-        arrayRombo = new int[Integer.parseInt(this.jSpinner1.getValue().toString())][Integer.parseInt(this.jSpinner1.getValue().toString())];
+        arrayRombo = new String[Integer.parseInt(this.jSpinner1.getValue().toString())][Integer.parseInt(this.jSpinner1.getValue().toString())];
+        for (int i = 0; i < arrayRombo.length; i++) {
+            for (int j = 0; j < arrayRombo.length; j++) {
+                arrayRombo[i][j]=" ";
+            }
+        }
         llenarArray(relleno);
         
     }//GEN-LAST:event_jButton2ActionPerformed
