@@ -9,7 +9,7 @@ package objetos;
  *
  * @author cissanal
  */
-public class Persona {
+public class Persona implements Comparable<Persona> {
     private String nombre;
     private int edad;
 
@@ -37,6 +37,11 @@ public class Persona {
     @Override
     public String toString() {
         return "nombre=" + nombre + ", edad=" + edad ;
+    }
+
+    @Override
+    public int compareTo(Persona o) {
+        return this.getNombre().compareTo(o.getNombre());
     }
     
     
