@@ -136,7 +136,9 @@ public class AppPersonas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(posicion==5){
+        if(this.jTextField1.getText().isEmpty()||this.jTextField2.getText().isEmpty()||this.jTextField1.getText()==null||this.jTextField2.getText()==null){
+            JOptionPane.showMessageDialog(this, "No has introducido ningun caracter ");
+        }else if(posicion==5){
             JOptionPane.showMessageDialog(this, "Array Lleno");
         }else{
         String nombre=this.jTextField1.getText();
@@ -156,20 +158,32 @@ public class AppPersonas extends javax.swing.JFrame {
         //que diga cuantas personas hay que sean mayores de 18 anos
         String mayores=" ";
         int contMayores=0;
-        for (Persona persona : personas) {
-            if (persona.getEdad()>=18){
-                mayores=mayores+persona.getNombre()+" \n ";
-                contMayores++;
+        
+        try {
+            for (Persona persona : personas) {
+                if (persona.getEdad() >= 18) {
+                    mayores = mayores + persona.getNombre() + " \n ";
+                    contMayores++;
+                }
             }
+            JOptionPane.showMessageDialog(this, "Numero de mayores de edad: " + contMayores + " \n " + mayores);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Termina de rellenar el array");
         }
-        JOptionPane.showMessageDialog(this, "Numero de mayores de edad: "+contMayores+ " /n "+mayores);
         
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // ventana: introduzca el nombre de la persona, que diga si se encuentra o no
+        int contador2=0;
+        String busqueda=JOptionPane.showInputDialog("Introduzca el nombre a buscar");
+        for (Persona persona : personas) {
+            contador2++;
+            if(persona.getNombre().equals(busqueda)){
+                JOptionPane.showMessageDialog(this, contador2);
+            }
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
